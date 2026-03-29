@@ -1,4 +1,3 @@
-
 const GenerateButton = ({ onGenerate }) => {
   return (
     <button
@@ -7,7 +6,7 @@ const GenerateButton = ({ onGenerate }) => {
     >
       Generate Password
     </button>
-  )
-}
+  );
+};
 
-export default GenerateButton
+export default GenerateButton;
