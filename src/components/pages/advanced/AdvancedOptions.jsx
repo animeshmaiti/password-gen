@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { generateAdvancedPasswords } from "../../../utils/passwordUtilsAdvanced";
 
-const AdvancedOptions = ({ onGenerate }) => {
+const AdvancedOptions = () => {
   const [length, setLength] = useState(16);
   const [lengthInput, setLengthInput] = useState("16");
   const [includeChars, setIncludeChars] = useState("");
@@ -14,66 +15,20 @@ const AdvancedOptions = ({ onGenerate }) => {
   const [countInput, setCountInput] = useState("1");
   const [result, setResult] = useState("");
 
-  const charSets = {
-    lowercase: "abcdefghijklmnopqrstuvwxyz",
-    uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    numbers: "0123456789",
-    symbols: "!@#$%^&*()_+{}[]<>?/|",
-  };
-
-  const similar = "0oO1lI";
-  const ambiguous = "~,;:.{}<>[]()/\\'`";
-
   const generate = () => {
-    if (!length || length <= 0) {
-      setResult("Enter valid length");
-      return;
-    }
-    let base =
-      charSets.lowercase +
-      charSets.uppercase +
-      charSets.numbers +
-      charSets.symbols;
+    const res = generateAdvancedPasswords({
+      length,
+      includeChars,
+      excludeChars,
+      beginWith,
+      endWith,
+      excludeSimilar,
+      excludeAmbiguous,
+      noDuplicate,
+      count,
+    });
 
-    if (excludeSimilar) base = filter(base, similar);
-    if (excludeAmbiguous) base = filter(base, ambiguous);
-    if (excludeChars) base = filter(base, excludeChars);
-    if (includeChars) base += includeChars;
-
-    let passwords = [];
-
-    for (let c = 0; c < count; c++) {
-      let pass = [];
-
-      for (let i = 0; i < length; i++) {
-        let ch = random(base);
-
-        if (noDuplicate && pass.includes(ch)) {
-          i--;
-          continue;
-        }
-
-        pass.push(ch);
-      }
-
-      // begins with
-      if (beginWith === "letter") {
-        pass[0] = random(charSets.lowercase + charSets.uppercase);
-      } else if (beginWith === "number") {
-        pass[0] = random(charSets.numbers);
-      }
-
-      // ends with
-      if (endWith === "letter") {
-        pass[length - 1] = random(charSets.lowercase + charSets.uppercase);
-      } else if (endWith === "number") {
-        pass[length - 1] = random(charSets.numbers);
-      }
-
-      passwords.push(pass.join(""));
-    }
-
-    setResult(passwords.join("\n"));
+    setResult(res);
   };
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -92,13 +47,6 @@ const AdvancedOptions = ({ onGenerate }) => {
     noDuplicate,
     count,
   ]);
-
-  const random = (str) => str[Math.floor(Math.random() * str.length)];
-  const filter = (str, remove) =>
-    str
-      .split("")
-      .filter((c) => !remove.includes(c))
-      .join("");
   return (
     <div className="space-y-4">
       <h2 className="bg-blue-600 text-white px-4 py-2 rounded-md font-semibold">

@@ -1,5 +1,5 @@
 import React from 'react'
-import AdvancedOptions from '../AdvancedOptions'
+import AdvancedOptions from './advanced/AdvancedOptions'
 
 const Advanced = () => {
   return (

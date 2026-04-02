@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import PasswordDisplay from "../PasswordDisplay";
-import PasswordOptions from "../PasswordOptions";
-import GenerateButton from "../GenerateButton";
-import StrengthIndicator from "../StrengthIndicator";
-import { generatePassword, getStrength } from "../../utils/passwordUtils";
+import PasswordDisplay from "./basic/PasswordDisplay";
+import PasswordOptions from "./basic/PasswordOptions";
+import GenerateButton from "./basic/GenerateButton";
+import StrengthIndicator from "./basic/StrengthIndicator";
+import { generatePassword, getStrength } from "../../utils/passwordUtilsBasic";
 
 const Basic = () => {
   const [length, setLength] = useState(16);
