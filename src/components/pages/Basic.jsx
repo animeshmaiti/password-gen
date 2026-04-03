@@ -33,9 +33,9 @@ const Basic = () => {
     handleGenerate();
   }, [length, options]);
   return (
-    <div className="space-y-4">
-      <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-6 space-y-4">
-        <h2 className="bg-blue-600 text-white px-4 py-2 rounded-md font-semibold">
+    <div className="space-y-4 flex flex-col items-center justify-center py-10">
+      <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl w-full max-w-md p-6 space-y-4">
+        <h2 className="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-md font-semibold">
           Basic Password Generator
         </h2>
 
