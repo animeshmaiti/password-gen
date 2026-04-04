@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import Basic from "./components/pages/Basic";
 import Advanced from "./components/pages/Advanced";
-import { Routes, Route } from "react-router-dom";
-
+import Memorable from "./components/pages/Memorable";
 import "./App.css";
-import NavBar from "./components/NavBar";
 
 function App() {
   const [theme, setTheme] = useState("system");
@@ -60,6 +60,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Basic />} />
         <Route path="/advanced" element={<Advanced />} />
+        <Route path="/memorable" element={<Memorable />} />
       </Routes>
     </div>
   );
