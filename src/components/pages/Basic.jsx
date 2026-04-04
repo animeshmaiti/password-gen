@@ -3,7 +3,8 @@ import PasswordDisplay from "./basic/PasswordDisplay";
 import PasswordOptions from "./basic/PasswordOptions";
 import GenerateButton from "./basic/GenerateButton";
 import StrengthIndicator from "./basic/StrengthIndicator";
-import { generatePassword, getStrength,calculateEntropy } from "../../utils/passwordUtilsBasic";
+import { generatePassword } from "../../utils/passwordUtilsBasic";
+import { getStrength, calculateEntropy } from "../../utils/entropy";
 
 const Basic = () => {
   const [length, setLength] = useState(16);
