@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { generateAdvancedPasswords } from "../../../utils/passwordUtilsAdvanced";
+import { getStrength, calculateEntropy } from "../../../utils/entropy";
 
 const AdvancedOptions = () => {
   const [length, setLength] = useState(16);
@@ -14,6 +15,10 @@ const AdvancedOptions = () => {
   const [count, setCount] = useState(1);
   const [countInput, setCountInput] = useState("1");
   const [result, setResult] = useState("");
+
+  const firstPassword = result.split("\n")[0] || "";
+  const entropy = calculateEntropy(firstPassword);
+  const strength = getStrength(entropy);
 
   const generate = () => {
     const res = generateAdvancedPasswords({
@@ -194,6 +199,27 @@ const AdvancedOptions = () => {
           rows={4}
           className="w-full border p-2 rounded resize-none overflow-auto"
         />
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span>Entropy: {entropy} bits</span>
+            <span>{strength}</span>
+          </div>
+
+          {/* Progress bar */}
+          <div className="w-full h-2 bg-gray-300 dark:bg-gray-700 rounded">
+            <div
+              className={`h-2 rounded transition-all duration-300 ${
+                strength === "Weak"
+                  ? "bg-red-500 w-1/4"
+                  : strength === "Medium"
+                    ? "bg-yellow-500 w-2/4"
+                    : strength === "Strong"
+                      ? "bg-green-500 w-3/4"
+                      : "bg-blue-500 w-full"
+              }`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

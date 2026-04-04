@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { getStrength,calculateEntropy } from "../../utils/entropy";
+import StrengthIndicator from "./basic/StrengthIndicator";
 
 const words = [
   "tiger",
@@ -18,17 +20,20 @@ const random = (arr) => arr[Math.floor(Math.random() * arr.length)];
 export default function Memorable() {
   const [copied, setCopied] = useState(false);
   const [password, setPassword] = useState("");
+  const [wordCountInput,setWordCountInput]=useState("3")
   const [wordCount, setWordCount] = useState(3);
   const [separator, setSeparator] = useState("-");
   const [useNumbers, setUseNumbers] = useState(false);
   const [customWords, setCustomWords] = useState("");
   const [useCustomOnly, setUseCustomOnly] = useState(false);
   const [capitalize, setCapitalize] = useState(false);
+
+  const entropy = calculateEntropy(password);
+  const strength = getStrength(entropy);
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
-
     setCopied(true);
-
     setTimeout(() => {
       setCopied(false);
     }, 1500); // 1.5 sec
@@ -88,6 +93,7 @@ export default function Memorable() {
 
     setPassword(result);
   };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       generate();
@@ -109,6 +115,7 @@ export default function Memorable() {
         <h2 className="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-md font-semibold">
           Easy to Remember Password Generator
         </h2>
+        {/* password display */}
         <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg flex items-center justify-between">
           <input
             value={password}
@@ -127,16 +134,21 @@ export default function Memorable() {
             {copied ? "Copied ✓" : "Copy"}
           </button>
         </div>
-
+        <StrengthIndicator strength={strength} />
         {/* Controls */}
         {/* Word count */}
         <div className="flex justify-between items-center">
           <span># of Words</span>
           <input
             type="number"
-            value={wordCount}
+            value={wordCountInput}
             min={1}
-            onChange={(e) => setWordCount(Number(e.target.value))}
+            onChange={(e) => {
+              setWordCountInput(e.target.value);
+              if (e.target.value !== "") {
+                setWordCount(Number(e.target.value));
+              }
+            }}
             className="border p-1 rounded w-24 bg-white dark:bg-gray-700 dark:border-gray-600"
           />
         </div>
