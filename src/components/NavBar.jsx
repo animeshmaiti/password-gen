@@ -31,6 +31,9 @@ const NavBar = ({ theme, setTheme }) => {
           <NavLink to="/memorable" className={linkClass}>
             Memorable
           </NavLink>
+          <NavLink to="/entropy" className={linkClass}>
+            Entropy Checker Advance
+          </NavLink>
         </div>
 
         {/* Theme buttons */}
@@ -97,6 +100,13 @@ const NavBar = ({ theme, setTheme }) => {
             onClick={() => setOpen(false)}
           >
             Memorable
+          </NavLink>
+          <NavLink
+            to="/entropy"
+            className={linkClass}
+            onClick={() => setOpen(false)}
+          >
+            Entropy Checker Advance
           </NavLink>
         </div>
       </div>

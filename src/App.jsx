@@ -5,6 +5,7 @@ import Basic from "./components/pages/Basic";
 import Advanced from "./components/pages/Advanced";
 import Memorable from "./components/pages/Memorable";
 import "./App.css";
+import EntropyChecker from "./components/pages/EntropyChecker";
 
 function App() {
   const [theme, setTheme] = useState("system");
@@ -61,6 +62,7 @@ function App() {
         <Route path="/" element={<Basic />} />
         <Route path="/advanced" element={<Advanced />} />
         <Route path="/memorable" element={<Memorable />} />
+        <Route path="/entropy" element={<EntropyChecker />} />
       </Routes>
     </div>
   );
