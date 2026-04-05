@@ -53,7 +53,7 @@ const AdvancedOptions = () => {
     count,
   ]);
   return (
-    <div className="space-y-4 flex flex-col items-center justify-center py-5">
+    <div className="space-y-4 flex flex-col items-center justify-center py-5 mx-2">
       <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl w-full max-w-md p-6 space-y-4">
         <h2 className="bg-blue-600 text-white px-4 py-2 rounded-md font-semibold">
           Advanced Password Generator
