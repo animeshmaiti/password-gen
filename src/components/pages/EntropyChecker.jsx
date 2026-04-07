@@ -29,7 +29,7 @@ export default function EntropyChecker() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="space-y-6 text-black dark:text-white max-w-5xl mt-6 mx-2">
+      <div className="space-y-6 text-black dark:text-white w-full max-w-2xl mt-6 mx-auto px-2">
         {/* Input */}
         <input
           value={password}
@@ -38,20 +38,20 @@ export default function EntropyChecker() {
         />
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
+        <div className="flex items-center justify-center w-fit mx-auto gap-4">
+          <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center w-40">
             <p className="text-sm text-gray-500">Entropy</p>
             <p className="font-semibold">{entropy.toFixed(1)} bits</p>
           </div>
 
-          <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center w-40">
             <p className="text-sm text-gray-500">Length</p>
             <p className="font-semibold">{password.length}</p>
           </div>
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+        <div className="w-full overflow-x-auto bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
           <table className="w-full text-sm text-center border-collapse">
             {/* Header */}
             <thead>
