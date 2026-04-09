@@ -30,12 +30,21 @@ export default function EntropyChecker() {
   return (
     <div className="flex flex-col items-center">
       <div className="space-y-6 text-black dark:text-white w-full max-w-2xl mt-6 mx-auto px-2">
+        <div className="flex flex-col items-center">
+          <h1 className="text-4xl font-bold">Password Entropy Checker</h1>
+          <p className="text-gray-300">
+            How long would it take to crack a password?
+          </p>
+        </div>
         {/* Input */}
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 rounded-lg bg-gray-200 dark:bg-gray-700 outline-none"
-        />
+        <div className="flex flex-col items-center gap-2 w-full">
+          <p className="text-sm text-gray-300">ENTER PASSWORD</p>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 rounded-lg bg-gray-200 dark:bg-gray-700 outline-none"
+          />
+        </div>
 
         {/* Stats */}
         <div className="flex items-center justify-center w-fit mx-auto gap-4">

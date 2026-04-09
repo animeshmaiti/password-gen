@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import lock from "../assets/locked.png";
 
 const NavBar = ({ theme, setTheme }) => {
   const [open, setOpen] = useState(false);
@@ -19,9 +20,16 @@ const NavBar = ({ theme, setTheme }) => {
         <button className="md:hidden text-xl" onClick={() => setOpen(!open)}>
           ☰
         </button>
-
+        <div className="md:hidden flex items-center justify-center gap-2">
+          <img src={lock} alt="Lock" className="w-6 h-6" />
+          <p>PasswordLab</p>
+        </div>
         {/* Desktop tabs */}
         <div className="hidden md:flex gap-2">
+          <div className="flex items-center justify-center gap-2">
+            <img src={lock} alt="Lock" className="w-6 h-6" />
+            <p>PasswordLab</p>
+          </div>
           <NavLink to="/" className={linkClass}>
             Basic
           </NavLink>

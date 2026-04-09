@@ -6,6 +6,9 @@ import Advanced from "./components/pages/Advanced";
 import Memorable from "./components/pages/Memorable";
 import "./App.css";
 import EntropyChecker from "./components/pages/EntropyChecker";
+import Footer from "./components/Footer";
+import Privacy from "./components/pages/Privacy";
+import About from "./components/pages/About";
 
 function App() {
   const [theme, setTheme] = useState("system");
@@ -44,14 +47,14 @@ function App() {
 
   // load saved theme
   useEffect(() => {
-  const saved = localStorage.getItem("theme");
+    const saved = localStorage.getItem("theme");
 
-  if (saved === "light" || saved === "dark") {
-    setTheme(saved);
-  } else {
-    setTheme("system"); // fallback
-  }
-}, []);
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved);
+    } else {
+      setTheme("system"); // fallback
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
@@ -63,7 +66,10 @@ function App() {
         <Route path="/advanced" element={<Advanced />} />
         <Route path="/memorable" element={<Memorable />} />
         <Route path="/entropy" element={<EntropyChecker />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
