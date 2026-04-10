@@ -11,6 +11,43 @@ function PasswordDisplay({ password, setPassword }) {
       setCopied(false);
     }, 1500); // 1.5 sec
   };
+
+//   const copyToClipboard = () => {
+//   if (navigator.clipboard && window.isSecureContext) {
+//     navigator.clipboard.writeText(password)
+//       .then(() => {
+//         setCopied(true);
+//         setTimeout(() => setCopied(false), 1500);
+//       })
+//       .catch(() => fallbackCopy());
+//   } else {
+//     fallbackCopy();
+//   }
+// };
+
+// const fallbackCopy = () => {
+//   const textArea = document.createElement("textarea");
+//   textArea.value = password;
+
+//   // Avoid scrolling to bottom
+//   textArea.style.position = "fixed";
+//   textArea.style.left = "-999999px";
+
+//   document.body.appendChild(textArea);
+//   textArea.focus();
+//   textArea.select();
+
+//   try {
+//     document.execCommand("copy");
+//     setCopied(true);
+//     setTimeout(() => setCopied(false), 1500);
+//   } catch (err) {
+//     alert("Copy failed. Please copy manually.");
+//   }
+
+//   document.body.removeChild(textArea);
+// };
+
   return (
     <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg flex items-center justify-between">
       <input
